@@ -1,0 +1,25 @@
+{
+  "name": "valley-router",
+  "version": "1.0.0",
+  "description": "router for valley-module",
+  "main": "index.js",
+  "scripts": {
+    "demo": "DEBUG=* node demo/demo.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hitvalley/valley-router.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hitvalley/valley-router/issues"
+  },
+  "homepage": "https://github.com/hitvalley/valley-router#readme",
+  "dependencies": {
+    "path-to-regexp": "^2.1.0",
+    "valley-module": "^1.0.2",
+    "debug": "^3.1.0"
+  }
+}
