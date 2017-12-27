@@ -22,9 +22,9 @@ class RouterModule extends ValleyModule {
   prepare() {
     this.use('route', async function(next) {
       let path = this.context.path;
+      let method = this.context.method || 'GET';
       let routers = this.routers.filter(item => {
-        let res = item.rule.exec(path)
-        return res;
+        return item.rule.exec(path) && (item.methods.indexOf(method) >= 0)
       });
       let router = routers.shift();
       if (router && router.router) {
@@ -48,11 +48,15 @@ class RouterModule extends ValleyModule {
       return item;
     })
   }
-  add(path, router) {
-    // if (typeof method === 'string') {
-      // method = method.toUpperCase();
-      // method = method === 'ALL' ? Object.assign([], METHODS) : [method];
-    // }
+  add(path, methods, router) {
+    let type = typeof methods;
+    if (type === 'string') {
+      methods = methods.toUpperCase();
+      methods = methods === 'ALL' ? Object.assign([], METHODS) : [methods];
+    } else if (methods instanceof ValleyModule || type === 'function') {
+      router = methods;
+      methods = ['GET'];
+    }
     let wholePath = this.prefix + path;
     let end = false;
     let keys = [];
@@ -69,6 +73,7 @@ class RouterModule extends ValleyModule {
     debug(`${wholePath}, ${rule}`);
     this.routers.push({
       path: wholePath,
+      methods,
       rule,
       end,
       router
