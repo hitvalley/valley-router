@@ -82,6 +82,9 @@ class RouterModule extends ValleyModule {
   get(path, router) {
     this.add(path, 'GET', router);
   }
+  post(path, router) {
+    this.add(path, 'POST', router);
+  }
 }
 
 module.exports = RouterModule;
