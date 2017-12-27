@@ -1,6 +1,6 @@
 {
   "name": "valley-router",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "router for valley-module",
   "main": "index.js",
   "scripts": {
