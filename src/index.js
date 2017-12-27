@@ -79,6 +79,9 @@ class RouterModule extends ValleyModule {
       router
     });
   }
+  get(path, router) {
+    this.add(path, 'GET', router);
+  }
 }
 
 module.exports = RouterModule;
