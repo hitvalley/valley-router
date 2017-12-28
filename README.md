@@ -44,4 +44,5 @@ server.listen({
 ```
 ### 结果
 
-访问: http://localhost:3000/info/1
+1. 访问 http://localhost:3000/info/1 得到页面
+2. 访问其他页面会得到 404
