@@ -10,8 +10,10 @@ npm run demo
 ## 服务器端运行
 
 ### 引入
+
 ```
 npm i valley-router
+npm i valley-server
 ```
 
 ### 代码
