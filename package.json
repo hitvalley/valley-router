@@ -2,10 +2,11 @@
   "name": "valley-router",
   "version": "1.0.3",
   "description": "router for valley-module",
-  "main": "index.js",
+  "main": "src/valley-router-node.js",
   "scripts": {
     "demo": "DEBUG=* node demo/demo.js",
-    "build:web": "rollup --config rollup.web.config.js"
+    "build:web": "rollup --config rollup.web.config.js",
+    "build:node": "rollup --config rollup.node.config.js"
   },
   "repository": {
     "type": "git",
