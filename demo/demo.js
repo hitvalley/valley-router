@@ -2,7 +2,7 @@ const debug = require('debug');
 const info = debug('valley-rooter-demo:info');
 const error = debug('valley-rooter-demo:error');
 
-const RouterModule = require('../src/index');
+const RouterModule = require('../src/valley-router-node');
 
 const mainRouter = new RouterModule();
 

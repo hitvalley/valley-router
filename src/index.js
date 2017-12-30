@@ -58,8 +58,6 @@ class RouterModule extends ValleyModule {
         } else {
           await router.router.call(this, next);
         }
-      } else {
-        return Promise.reject('404');
       }
       await next();
     });

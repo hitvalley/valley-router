@@ -9,8 +9,7 @@ export default {
     name: 'ValleyRouter'
   },
   external: [
-    'ValleyModule',
-    'valley-module'
+    'ValleyModule'
   ],
   plugins: [
     resolve({
