@@ -1136,12 +1136,28 @@ class RouterModule extends valleyModule {
         });
         this.context.params = params;
         if (router.router instanceof valleyModule) {
-          await router.router.run(this.context);
+          await router.router.run(this.context).catch(err => {
+            this.context.response = this.context.response || {
+              state: 500,
+              text: err.message
+            };
+          });
         } else {
-          await router.router.call(this, next);
+          try {
+            await router.router.call(this, next);
+          } catch(err) {
+            this.context.response = this.context.response || {
+              state: 500,
+              text: err.message
+            };
+          }
         }
+        await next();
+      } else {
+        this.context.response = {
+          state: 404
+        };
       }
-      await next();
     });
   }
   setPrefix(prefix) {
