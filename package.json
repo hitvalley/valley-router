@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/hitvalley/valley-router#readme",
   "dependencies": {
-    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
     "babel-env": "^2.4.1",
     "debug": "^3.1.0",
     "path-to-regexp": "^2.1.0",
