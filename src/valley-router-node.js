@@ -52,6 +52,7 @@ class RouterModule extends ValleyModule {
         return res;
       });
       let router = routers.shift();
+      this.context.res = this.context.res || {};
       if (router && router.router) {
         router.keys.forEach((key, index) => {
           params[key] = values[index + 1];
@@ -59,26 +60,20 @@ class RouterModule extends ValleyModule {
         this.context.params = params;
         if (router.router instanceof ValleyModule) {
           await router.router.run(this.context).catch(err => {
-            this.context.response = this.context.response || {
-              state: 500,
-              text: err.message
-            };
+            this.context.res.state = 500;
+            this.context.res.msg = err.message;
           });
         } else {
           try {
             await router.router.call(this, next);
           } catch(err) {
-            this.context.response = this.context.response || {
-              state: 500,
-              text: err.message
-            };
+            this.context.res.state = 500;
+            this.context.res.msg = err.message;
           }
         }
         await next();
       } else {
-        this.context.response = {
-          state: 404
-        };
+        this.context.res.state = 404;
       }
     });
   }
